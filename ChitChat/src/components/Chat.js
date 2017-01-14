@@ -20,7 +20,23 @@ class Chat extends React.Component {
       />
     );
   }
+
+
+componentDidMount() {
+    Backend.loadMessages((message) => {
+      this.setState((previousState) => {
+        return {
+          messages: GiftedChat.append(previousState.messages, message),
+        };
+      });
+    });
+  }
+  componentWillUnmount() {
+    Backend.closeChat();
+  }
 }
+
+
 Chat.defaultProps = {
   name: 'friend',
 };
