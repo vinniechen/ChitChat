@@ -6,6 +6,7 @@ import {
   StyleSheet,
   TextInput,
   TouchableOpacity,
+  Image,
   } from 'react-native'
 
 import {
@@ -18,13 +19,15 @@ class Home extends React.Component {
   };
   render() {
     return (
-      <View>
-        <Text style={styles.title}>
-          Enter your name:
-        </Text>
+      <View style={styles.background}>
+      <View style= {styles.logo}>
+        <Image source={require('../images/chitchat-logo.png')} />
+      </View>
+      <View style={styles.input}>
+
         <TextInput
           style={styles.nameInput}
-          placeholder='Your Name'
+          placeholder='Enter Your Name'
           onChangeText={(text) => {
               this.setState({
                   name: text,
@@ -41,30 +44,51 @@ class Home extends React.Component {
           }}
         >
           <Text style={styles.buttonText}>
-            Next
+            Start Chatting
           </Text>
         </TouchableOpacity>
 
+      </View>
       </View>
     );
   }
 }
 
 var styles = StyleSheet.create({
+  background: {
+    flex: 1,
+    backgroundColor: '#9AACD3',
+
+  },
+  logo: {
+    flex: 3,
+    justifyContent: 'center',
+    alignItems: 'center',
+
+  },
+  input: {
+    flex: 1,
+    backgroundColor: '#9AACD3',
+
+  },
   title: {
     marginTop: 20,
     marginLeft: 20,
     fontSize: 20,
+    color: '#3f4655',
   },
   nameInput: {
+    backgroundColor: '#b9caef',
     padding: 2,
     height: 40,
     borderWidth: 2,
-    borderColor: 'black',
+    borderColor: '#3f4655',
     margin: 20,
   },
   buttonText: {
-    marginLeft: 20,
+    color: '#3f4655',
+    textAlign: 'right',
+    marginRight: 20,
     fontSize: 20
   },
 });
